@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/bot/:token/:method*", "destination": "/api/bot" }
+  ]
+}

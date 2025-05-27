@@ -1,0 +1,8 @@
+{
+  "name": "telegram-proxy-vercel",
+  "version": "1.0.0",
+  "dependencies": {},
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
