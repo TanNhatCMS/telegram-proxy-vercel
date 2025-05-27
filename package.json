@@ -1,7 +1,11 @@
 {
-  "name": "telegram-proxy-vercel",
+  "name": "telegram-bot-proxy",
   "version": "1.0.0",
-  "dependencies": {},
+  "main": "api/bot.js",
+  "dependencies": {
+    "micro": "^9.3.4",
+    "node-fetch": "^2.6.1"
+  },
   "scripts": {
     "dev": "vercel dev"
   }
