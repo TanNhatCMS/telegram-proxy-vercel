@@ -1,6 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/bot/:token/:method*", "destination": "/api/bot" }
+  "routes": [
+    {
+      "src": "^/bot(.*)",
+      "dest": "/api/bot"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
   ]
 }
