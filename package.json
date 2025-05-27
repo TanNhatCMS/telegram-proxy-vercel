@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "api/bot.js",
   "dependencies": {
-    "micro": "^9.3.4",
+    "micro": "^10.0.0",
     "node-fetch": "^2.6.1"
   },
   "scripts": {
