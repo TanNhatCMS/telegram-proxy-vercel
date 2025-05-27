@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Telegram Bot Proxy Tester</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    h1 {
+      color: #0088cc;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+    .response {
+      margin-top: 20px;
+      background: #e7f5ff;
+      border-left: 4px solid #0088cc;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Telegram Bot API Proxy</h1>
+  <form id="botForm">
+    <label>Bot Token:</label>
+    <input type="text" id="token" required placeholder="123456:ABC-DEF1234ghIkl...">
+
+    <label>Chat ID:</label>
+    <input type="text" id="chat_id" required placeholder="e.g. 123456789">
+
+    <label>Message:</label>
+    <textarea id="message" rows="4" required>Hello from Vercel Proxy!</textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="response" id="responseBox" style="display: none;"></div>
+
+  <script>
+    document.getElementById("botForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const token = document.getElementById("token").value.trim();
+      const chatId = document.getElementById("chat_id").value.trim();
+      const text = document.getElementById("message").value;
+
+      const url = `/bot${token}/sendMessage`;
+      const resBox = document.getElementById("responseBox");
+      resBox.style.display = "block";
+      resBox.textContent = "Sending...";
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: chatId, text }),
+        });
+        const data = await response.json();
+        resBox.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        resBox.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
